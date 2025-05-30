@@ -194,6 +194,9 @@ nav {
     margin-bottom: 1rem;
     color: var(--text-color);
     animation: fadeInUp 1s ease;
+    word-break: break-word;     /* Breaks long words */
+  overflow-wrap: break-word;  /* Ensures compatibility */
+  hyphens: auto;              /* Adds hyphens if needed */
 }
 
 .hero-content p {
