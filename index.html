@@ -3,563 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GarudaDev Data Services - Innovative Data Solutions & Open Source Projects</title>
-    <meta name="description" content="Explore innovative data visualization projects, geographic tools, APIs, and open source contributions by Akula Guru Datta - GarudaDev Data Services">
+    <title>GarudadevDataServices - Innovative Data Solutions & Open Source Projects</title>
+    <meta name="description" content="Explore innovative data visualization projects, geographic tools, APIs, and open source contributions by Akula Guru Datta - GarudadevDataServices">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary-color: #667eea;
-            --secondary-color: #764ba2;
-            --accent-color: #f093fb;
-            --dark-bg: #0f0f23;
-            --card-bg: rgba(255, 255, 255, 0.1);
-            --text-light: #ffffff;
-            --text-muted: #a0a0a0;
-            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            --glass-bg: rgba(255, 255, 255, 0.1);
-            --glass-border: rgba(255, 255, 255, 0.2);
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: var(--dark-bg);
-            color: var(--text-light);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Animated Background */
-        .bg-animation {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background: var(--dark-bg);
-        }
-
-        .bg-animation::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.2) 0%, transparent 50%);
-            animation: bgFloat 20s ease-in-out infinite;
-        }
-
-        @keyframes bgFloat {
-            0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); }
-            33% { transform: translateY(-30px) rotate(1deg) scale(1.1); }
-            66% { transform: translateY(30px) rotate(-1deg) scale(0.9); }
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 1rem 2rem;
-            background: rgba(15, 15, 35, 0.9);
-            backdrop-filter: blur(20px);
-            z-index: 1000;
-            border-bottom: 1px solid var(--glass-border);
-            transition: all 0.3s ease;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            background: var(--gradient-1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: var(--text-light);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent-color);
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gradient-2);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 2rem;
-            position: relative;
-        }
-
-        .hero-content h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            margin-bottom: 1rem;
-            background: var(--gradient-1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: fadeInUp 1s ease;
-        }
-
-        .hero-content p {
-            font-size: clamp(1.1rem, 2vw, 1.3rem);
-            margin-bottom: 2rem;
-            color: var(--text-muted);
-            animation: fadeInUp 1s ease 0.2s both;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            animation: fadeInUp 1s ease 0.4s both;
-        }
-
-        .btn {
-            padding: 12px 30px;
-            border: none;
-            border-radius: 50px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .btn-primary {
-            background: var(--gradient-1);
-            color: white;
-        }
-
-        .btn-secondary {
-            background: var(--glass-bg);
-            color: var(--text-light);
-            border: 2px solid var(--glass-border);
-            backdrop-filter: blur(10px);
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
-        }
-
-        /* Stats Section */
-        .stats {
-            padding: 4rem 2rem;
-            text-align: center;
-        }
-
-        .stats-grid {
-            max-width: 800px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-        }
-
-        .stat-card {
-            background: var(--glass-bg);
-            padding: 2rem;
-            border-radius: 20px;
-            border: 1px solid var(--glass-border);
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: bold;
-            background: var(--gradient-2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .stat-label {
-            color: var(--text-muted);
-            margin-top: 0.5rem;
-        }
-
-        /* Projects Section */
-        .projects {
-            padding: 6rem 2rem;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-title {
-            font-size: clamp(2rem, 4vw, 3rem);
-            margin-bottom: 1rem;
-            background: var(--gradient-1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .section-subtitle {
-            color: var(--text-muted);
-            font-size: 1.2rem;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .project-card {
-            background: var(--glass-bg);
-            border-radius: 20px;
-            padding: 2rem;
-            border: 1px solid var(--glass-border);
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: var(--gradient-1);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .project-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .project-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--gradient-2);
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
-        }
-
-        .project-title {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-
-        .project-description {
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-        }
-
-        .project-features {
-            margin-bottom: 1.5rem;
-        }
-
-        .project-features ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .project-features li {
-            padding: 0.25rem 0;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        .project-features li::before {
-            content: '✓';
-            color: var(--accent-color);
-            margin-right: 0.5rem;
-            font-weight: bold;
-        }
-
-        .project-links {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .project-link {
-            padding: 8px 16px;
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 25px;
-            color: var(--text-light);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .project-link:hover {
-            background: var(--gradient-1);
-            transform: translateY(-2px);
-        }
-
-        .tech-stack {
-            margin-top: 1rem;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .tech-tag {
-            background: rgba(102, 126, 234, 0.2);
-            color: var(--accent-color);
-            padding: 4px 12px;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            border: 1px solid rgba(102, 126, 234, 0.3);
-        }
-
-        /* Developer Section */
-        .developer {
-            padding: 6rem 2rem;
-            background: rgba(255, 255, 255, 0.02);
-        }
-
-        .developer-content {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .developer-avatar {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            background: var(--gradient-1);
-            margin: 0 auto 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            border: 4px solid var(--glass-border);
-        }
-
-        .developer-name {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            background: var(--gradient-1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .developer-bio {
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-            font-size: 1.1rem;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .social-link {
-            width: 50px;
-            height: 50px;
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-light);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-        }
-
-        .social-link:hover {
-            background: var(--gradient-1);
-            transform: translateY(-3px);
-        }
-
-        /* Footer */
-        footer {
-            padding: 2rem;
-            text-align: center;
-            border-top: 1px solid var(--glass-border);
-            background: rgba(15, 15, 35, 0.8);
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Mobile Responsiveness */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .btn {
-                width: 100%;
-                max-width: 300px;
-                justify-content: center;
-            }
-            
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 480px) {
-            nav {
-                padding: 1rem;
-            }
-            
-            .hero {
-                padding: 1rem;
-            }
-            
-            .projects {
-                padding: 4rem 1rem;
-            }
-            
-            .developer {
-                padding: 4rem 1rem;
-            }
-            
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/svg+xml" href="garuda-icon.svg">
 </head>
 <body>
     <div class="bg-animation"></div>
-    
+
     <nav>
         <div class="nav-container">
-            <div class="logo">GarudaDev</div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#developer">Developer</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+            <div class="logo">
+                <img src="garuda-icon.svg" alt="Garuda Icon" class="logo-icon">
+                GarudadevDataServices
+            </div>
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#developer">Developer</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
         </div>
     </nav>
 
     <section class="hero" id="home">
         <div class="hero-content">
-            <h1>GarudaDev Data Services</h1>
+            <h1>GarudadevDataServices</h1>
             <p>Innovative Data Visualization, Geographic Tools & Open Source Solutions</p>
             <div class="cta-buttons">
                 <a href="#projects" class="btn btn-primary">
@@ -581,12 +56,16 @@
                 <div class="stat-label">Active Projects</div>
             </div>
             <div class="stat-card">
-                <div class="stat-number">10K+</div>
+                <div class="stat-number">47K+</div>
                 <div class="stat-label">App Downloads</div>
             </div>
             <div class="stat-card">
                 <div class="stat-number">100%</div>
                 <div class="stat-label">Open Source</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">165+</div>
+                <div class="stat-label">GitHub Stars</div>
             </div>
         </div>
     </section>
@@ -597,7 +76,7 @@
                 <h2 class="section-title">Featured Projects</h2>
                 <p class="section-subtitle">Explore my collection of data visualization tools, APIs, and applications</p>
             </div>
-            
+
             <div class="projects-grid">
                 <div class="project-card fade-in">
                     <div class="project-icon">
@@ -855,12 +334,12 @@
     <section class="developer" id="developer">
         <div class="developer-content fade-in">
             <div class="developer-avatar">
-                <i class="fas fa-user-astronaut"></i>
+                <img src="garuda-icon.svg" alt="Garuda Icon" class="avatar-icon">
             </div>
             <h2 class="developer-name">Akula Guru Datta</h2>
             <p class="developer-bio">
-                Passionate about data visualization, geographic information systems (GIS), and building impactful open-source projects. 
-                I strive to create intuitive tools and applications that leverage data to solve real-world problems and contribute to the developer community. 
+                Passionate about data visualization, geographic information systems (GIS), and building impactful open-source projects.
+                I strive to create intuitive tools and applications that leverage data to solve real-world problems and contribute to the developer community.
                 My focus is often on bringing complex data to life through interactive maps and user-friendly interfaces.
             </p>
             <div class="social-links">
@@ -880,36 +359,12 @@
 
     <footer id="contact">
         <div class="container">
-            <p>© 2024 GarudaDev Data Services. All rights reserved.</p>
+            <p>© 2024 GarudadevDataServices. All rights reserved.</p>
             <p>Built with ❤️ for Open Source.</p>
             <p>Contact: <a href="mailto:akula.datta07@gmail.com" style="color: var(--accent-color); text-decoration: none;">akula.datta07@gmail.com</a></p>
         </div>
     </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const faders = document.querySelectorAll('.fade-in');
-
-            const appearOptions = {
-                threshold: 0.1,
-                rootMargin: "0px 0px -100px 0px"
-            };
-
-            const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
-                entries.forEach(entry => {
-                    if (!entry.isIntersecting) {
-                        return;
-                    } else {
-                        entry.target.classList.add('visible');
-                        appearOnScroll.unobserve(entry.target);
-                    }
-                });
-            }, appearOptions);
-
-            faders.forEach(fader => {
-                appearOnScroll.observe(fader);
-            });
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
